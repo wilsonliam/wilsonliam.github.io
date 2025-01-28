@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, #001B3D, #0066CC);
+            background: linear-gradient(45deg, #ff0099, #00ff99);
             font-family: 'Michroma', sans-serif;
             color: white;
             overflow: hidden;
@@ -27,7 +27,7 @@
 
         .cyber-circle {
             position: absolute;
-            border: 2px solid #00FFFF;
+            border: 2px solid #0ff;
             border-radius: 50%;
             animation: float 10s infinite linear;
         }
@@ -69,7 +69,7 @@
         .container {
             text-align: center;
             padding: 3rem;
-            background: rgba(0, 27, 61, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             position: relative;
             z-index: 1;
             animation: pulse 2s infinite;
@@ -92,7 +92,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, #00FFFF, #FF0000);
+            background: linear-gradient(45deg, #0ff, #ff0099, #00ff99, #0ff);
             z-index: -1;
             animation: borderGlow 3s linear infinite;
             clip-path: polygon(
@@ -109,7 +109,7 @@
 
         .cyber-line {
             position: absolute;
-            background: linear-gradient(90deg, transparent, #00FFFF, transparent);
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
             height: 2px;
             width: 200px;
             animation: slideLine 4s infinite;
@@ -122,14 +122,14 @@
             font-size: 4rem;
             margin: 0;
             letter-spacing: 5px;
-            text-shadow: 3px 3px 0 #0066CC, -3px -3px 0 #00FFFF;
+            text-shadow: 3px 3px 0 #ff0099, -3px -3px 0 #0ff;
             animation: glitch 3s infinite;
         }
 
         .date {
             font-size: 2rem;
             margin: 1rem 0;
-            color: #00FFFF;
+            color: #00ff99;
             text-shadow: 2px 2px 0 #000;
         }
 
@@ -141,7 +141,7 @@
 
         .afterparty {
             font-size: 1.2rem;
-            color: #00FFFF;
+            color: #0ff;
             margin-top: 1rem;
             text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.5);
             animation: flicker 4s infinite;
@@ -159,9 +159,8 @@
         }
 
         @keyframes borderGlow {
-            0% { background: linear-gradient(45deg, #00FFFF, #FF0000); }
-            50% { background: linear-gradient(45deg, #FF0000, #00FFFF); }
-            100% { background: linear-gradient(45deg, #00FFFF, #FF0000); }
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            100% { filter: hue-rotate(360deg) brightness(1.2); }
         }
 
         @keyframes pulse {
@@ -172,11 +171,11 @@
 
         @keyframes glitch {
             0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); text-shadow: 3px 3px 0 #0066CC, -3px -3px 0 #00FFFF; }
-            40% { transform: translate(-2px, -2px); text-shadow: -3px 3px 0 #0066CC, 3px -3px 0 #00FFFF; }
-            60% { transform: translate(2px, 2px); text-shadow: 3px -3px 0 #0066CC, -3px 3px 0 #00FFFF; }
-            80% { transform: translate(2px, -2px); text-shadow: -3px -3px 0 #0066CC, 3px 3px 0 #00FFFF; }
-            100% { transform: translate(0); text-shadow: 3px 3px 0 #0066CC, -3px -3px 0 #00FFFF; }
+            20% { transform: translate(-2px, 2px); text-shadow: 3px 3px 0 #ff0099, -3px -3px 0 #0ff; }
+            40% { transform: translate(-2px, -2px); text-shadow: -3px 3px 0 #ff0099, 3px -3px 0 #0ff; }
+            60% { transform: translate(2px, 2px); text-shadow: 3px -3px 0 #ff0099, -3px 3px 0 #0ff; }
+            80% { transform: translate(2px, -2px); text-shadow: -3px -3px 0 #ff0099, 3px 3px 0 #0ff; }
+            100% { transform: translate(0); text-shadow: 3px 3px 0 #ff0099, -3px -3px 0 #0ff; }
         }
 
         @keyframes flicker {
@@ -214,7 +213,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, rgba(0, 102, 204, 0.2) 100%);
+            background: radial-gradient(circle, rgba(255, 0, 153, 0.2) 0%, rgba(0, 255, 153, 0.2) 100%);
             filter: blur(20px);
             z-index: -1;
         }
@@ -233,14 +232,12 @@
     <div class="scanlines"></div>
     <div class="container">
         <div class="glow"></div>
-        <h1>big man blastechno</h1>
-        <div class="date">friday // 1.31.2025</div>
+        <h1>(check back later) </h1>
+        <div class="date">tbd</div>
         <div class="details">
-            11 pm - 4 am<br>
-            3591 s 2000 e<br>
-            sounds by liam
+            sounds tbd 
         </div>
-        <img src="bigman.png" alt="BIGMANBLASTOISE" class="mt-8 w-24 rounded-lg">
+    <img src="teletubb2.png" alt="iykyk" class="mt-8 w-24 rounded-lg">
     </div>
 </body>
 </html>
