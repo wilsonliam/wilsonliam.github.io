@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/michroma/1.2/michroma.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff0099, #00ff99);
+            font-family: 'Michroma', sans-serif;
+            color: white;
+            overflow: hidden;
+            text-transform: lowercase;
+            perspective: 1000px;
+        }
+
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .cyber-circle {
+            position: absolute;
+            border: 2px solid #0ff;
+            border-radius: 50%;
+            animation: float 10s infinite linear;
+        }
+
+        .cyber-circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 20%;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation-duration: 15s;
+        }
+
+        .cyber-circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: 15%;
+            right: 10%;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            animation-duration: 20s;
+            animation-direction: reverse;
+        }
+
+        .hexagon {
+            position: absolute;
+            width: 100px;
+            height: 115px;
+            background: rgba(0, 255, 255, 0.1);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .hexagon:nth-child(3) { top: 20%; right: 25%; animation-delay: -2s; }
+        .hexagon:nth-child(4) { bottom: 30%; left: 15%; animation-delay: -4s; }
+        .hexagon:nth-child(5) { top: 40%; left: 30%; animation-delay: -6s; }
+
+        .container {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s infinite;
+            clip-path: polygon(
+                0% 15%,
+                15% 0%,
+                85% 0%,
+                100% 15%,
+                100% 85%,
+                85% 100%,
+                15% 100%,
+                0% 85%
+            );
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #0ff, #ff0099, #00ff99, #0ff);
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            clip-path: polygon(
+                0% 15%,
+                15% 0%,
+                85% 0%,
+                100% 15%,
+                100% 85%,
+                85% 100%,
+                15% 100%,
+                0% 85%
+            );
+        }
+
+        .cyber-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            height: 2px;
+            width: 200px;
+            animation: slideLine 4s infinite;
+        }
+
+        .cyber-line:nth-child(1) { top: 20%; left: -200px; animation-delay: 0s; }
+        .cyber-line:nth-child(2) { bottom: 30%; right: -200px; animation-delay: -2s; }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            letter-spacing: 5px;
+            text-shadow: 3px 3px 0 #ff0099, -3px -3px 0 #0ff;
+            animation: glitch 3s infinite;
+        }
+
+        .date {
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: #00ff99;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .details {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+
+        .afterparty {
+            font-size: 1.2rem;
+            color: #0ff;
+            margin-top: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.5);
+            animation: flicker 4s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes slideLine {
+            0% { transform: translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(calc(100vw + 200px)); opacity: 0; }
+        }
+
+        @keyframes borderGlow {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            100% { filter: hue-rotate(360deg) brightness(1.2); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); text-shadow: 3px 3px 0 #ff0099, -3px -3px 0 #0ff; }
+            40% { transform: translate(-2px, -2px); text-shadow: -3px 3px 0 #ff0099, 3px -3px 0 #0ff; }
+            60% { transform: translate(2px, 2px); text-shadow: 3px -3px 0 #ff0099, -3px 3px 0 #0ff; }
+            80% { transform: translate(2px, -2px); text-shadow: -3px -3px 0 #ff0099, 3px 3px 0 #0ff; }
+            100% { transform: translate(0); text-shadow: 3px 3px 0 #ff0099, -3px -3px 0 #0ff; }
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            5% { opacity: 0.8; }
+            10% { opacity: 1; }
+            15% { opacity: 0.9; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            85% { opacity: 0.8; }
+            90% { opacity: 1; }
+            95% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.03) 50%,
+                rgba(0, 0, 0, 0.03) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle, rgba(255, 0, 153, 0.2) 0%, rgba(0, 255, 153, 0.2) 100%);
+            filter: blur(20px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="cyber-circle"></div>
+        <div class="cyber-circle"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="cyber-line"></div>
+        <div class="cyber-line"></div>
+    </div>
+    <div class="scanlines"></div>
+    <div class="container">
+        <div class="glow"></div>
+        <h1>eighths</h1>
+        <div class="afterparty"> (what comes after quarters) 👍👍👍 </div>
+        <div class="date"> saturday feb 8 10-1am </div>
+        <div class="details">
+            sounds by liam mothafucka
+        </div>
+    <img src="eit.png" alt="iykyk" class="mt-8 w-24 rounded-lg">
+    </div>
+</body>
+</html>
