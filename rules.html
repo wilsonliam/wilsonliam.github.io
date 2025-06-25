@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technotubbies | Rules</title>
+
+  <!-- Retro pixel font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent: #ff0066;
+      --overlay: rgba(0, 0, 0, 0.65);
+      --text: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('background.png') center / cover no-repeat fixed;
+      font-family: 'Press Start 2P', sans-serif;
+      color: var(--text);
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .accent { color: var(--accent); }
+
+.rainbow {
+  background: linear-gradient(90deg, #ff9ac9 0%, #ffc0a8 16%, #fff2ae 33%, #c3fbd8 50%, #a9d2ff 66%, #d5b8ff 83%, #f8a9ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: white;
+  color: transparent;
+}
+    .panel {
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: var(--accent);
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    ul {
+      list-style: square;
+      margin-left: 1.25rem;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    a.back-link {
+      align-self: flex-start;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: 3px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      font-size: 0.75rem;
+    }
+
+    a.back-link:hover {
+      background: var(--accent);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h2>RULES</h2>
+    <ul>
+        <li>dress code: <strong> <span class="rainbow">rave-y</span>, berlin‑y, or <span class="accent">teletubb‑y</span> </strong>.</li>
+      <li><strong>no phones</strong>, <strong>no judgement</strong>.</li>
+    </ul>
+
+    <h2>DETAILS</h2>
+    <ul>
+      <li><strong>millcreek — address day of</strong></li>
+      <li><strong>9:00 PM – 3:00 AM</strong></li>
+      <li>SET TIMES:
+        <ul>
+          <li>9:30 – 11:00 — trance / acid</li>
+          <li>11:00 – 12:30 — industrial / hardcore</li>
+          <li>12:30 – 2:00 — melodic / bouncy </li>
+        </ul>
+      </li>
+    </ul>
+
+    <a href="index.html" class="back-link">← BACK</a>
+  </div>
+</body>
+</html>
