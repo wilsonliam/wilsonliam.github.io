@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tbd</title>
+  <style>
+    /*  -------- RESET / BASE --------  */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      color:#fff;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-transform:lowercase;
+      background:linear-gradient(180deg,#ffbb70 0%,#ff6e6e 40%,#ff4d8b 80%);
+      background-attachment:fixed;
+      overflow:hidden;
+    }
+
+    /*  -------- SUN & SKY ELEMENTS --------  */
+    .sun{
+      position:absolute;
+      bottom:-80px;
+      left:50%;
+      transform:translateX(-50%);
+      width:420px;
+      height:410px;
+      border-radius:50%;
+      background:radial-gradient(circle at center,#ffb642 0%,#ff8f26 50%,transparent 75%);
+      filter:blur(2px);
+      opacity:0.85;
+      animation:sunHue 12s ease-in-out infinite alternate;
+    }
+    /* subtle hue/brightness oscillation */
+    @keyframes sunHue{
+      0%{filter:blur(2px) hue-rotate(0deg) brightness(1)}
+      50%{filter:blur(2px) hue-rotate(15deg) brightness(1.12)}
+      100%{filter:blur(2px) hue-rotate(0deg) brightness(1)}
+    }
+
+    /* drifting clouds */
+    .cloud{
+      position:absolute;
+      width:180px;
+      height:60px;
+      background:rgba(255,255,255,0.15);
+      border-radius:50px;
+      filter:blur(3px);
+      animation:cloudFloat 60s linear infinite;
+    }
+    .cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:inherit}
+    .cloud::before{width:120px;height:50px;top:-20px;left:20px}
+    .cloud::after{width:140px;height:55px;top:10px;left:60px}
+    .cloud:nth-child(1){top:10%;left:-220px;animation-delay:-10s}
+    .cloud:nth-child(2){top:45%;left:-400px;animation-duration:70s;animation-delay:-25s}
+    .cloud:nth-child(3){bottom:20%;left:-300px;animation-duration:65s;animation-delay:-5s}
+    @keyframes cloudFloat{0%{transform:translateX(0)}100%{transform:translateX(calc(100vw + 500px))}}
+
+    /*  -------- INVITE CARD --------  */
+    .card{
+      padding:2.8rem 3.4rem;
+      text-align:center;
+      backdrop-filter:blur(8px) saturate(120%);
+      background:rgba(0,0,0,0.35);
+      border:1px solid rgba(255,255,255,0.25);
+      border-radius:10px;
+      box-shadow:0 4px 18px rgba(0,0,0,0.28);
+    }
+    h1{font-size:3.2rem;letter-spacing:3px;margin-bottom:.3rem}
+    .tagline{font-size:1rem;letter-spacing:1px;color:#ffde9e;margin-bottom:0.5rem}
+    .date{font-size:1.6rem;font-weight:600;margin:.4rem 0 1.2rem}
+    .details{font-size:1.1rem;line-height:1.5}
+
+    /* palms silhouette */
+    .palms{position:absolute;bottom:0;left:0;width:100%;height:170px;background:url('https://res.cloudinary.com/demo/image/upload/v1717819200/palm-silhouette_x8e1cq.png') bottom/cover no-repeat;filter:brightness(0.3);pointer-events:none}
+
+    /*  -------- RESPONSIVE --------  */
+    @media(max-width:600px){h1{font-size:2.4rem}.card{padding:2rem}.date{font-size:1.3rem}}
+  </style>
+</head>
+<body>
+  <!-- subtle atmosphere -->
+  <div class="sun"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+
+  <!-- invite card -->
+  <div class="card">
+
+    <img src="tub_trans.png"
+     alt="iykyk"
+     style="height:250px; width:300px; margin-top:0.5rem; border-radius:0.5rem;" />
+    <br/>
+    <h1> (technotubbies) </h1>
+    <div class="date"> july 12 </div>
+
+  </div>
+
+
+  <!-- foreground silhouettes -->
+  <div class="palms"></div>
+</body>
+</html>
