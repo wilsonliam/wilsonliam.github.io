@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technotubbies | July 12</title>
+
+  <!-- Pixellated arcade font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent: #ff0066;
+      --overlay: rgba(0, 0, 0, 0.65);
+      --text: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('background.png') center / cover no-repeat fixed;
+      font-family: 'Press Start 2P', sans-serif;
+      color: var(--text);
+      text-shadow: 2px 2px 0 #000; /* helps text pop on busy bg */
+    }
+
+    /* Centered translucent panel to keep things legible */
+    .panel {
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+
+    #artists {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+    }
+
+    .dj {
+      width: 300px; /* keep it crisp but not overpowering */
+      image-rendering: pixelated;
+    }
+
+    .rules-link {
+      margin-top: 0.5rem;
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border: 3px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .rules-link:hover {
+      background: var(--accent);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h2> liam + nick present </h2>
+    <h1>TECHNOTUBBIES</h1>
+    <h2>JULY 12</h2>
+
+
+
+    <p id="artists">SOUNDS BY LIAM · FORREST · BRYCE</p>
+
+    <a href="rules.html" class="rules-link">RULES+DETAILS</a>
+    <!-- DJ sprite -->
+    <img src="standing_dj_tub.png" alt="Technotubby DJ" class="dj" />
+
+
+  </div>
+</body>
+</html>
