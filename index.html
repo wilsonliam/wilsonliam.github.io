@@ -1,108 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Technotubbies | July 12</title>
-
-  <!-- Pixellated arcade font -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>michael monday</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/michroma/1.2/michroma.min.css" rel="stylesheet">
   <style>
-    :root {
-      --accent: #ff0066;
-      --overlay: rgba(0, 0, 0, 0.65);
-      --text: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
+    body {
       margin: 0;
       padding: 0;
-    }
-
-    body {
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      background: url('background.png') center / cover no-repeat fixed;
-      font-family: 'Press Start 2P', sans-serif;
-      color: var(--text);
-      text-shadow: 2px 2px 0 #000; /* helps text pop on busy bg */
-    }
-
-
-    .accent { color: var(--accent); }
-
-    /* Centered translucent panel to keep things legible */
-    .panel {
-      padding: 3rem 2.5rem;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 1.25rem;
+      background: linear-gradient(135deg, #ff6fa3, #ffcc66, #ff9966, #ff6699, #d94fff);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      font-family: 'Michroma', sans-serif;
+      color: white;
+      overflow: hidden;
+      text-transform: lowercase;
+      perspective: 1000px;
     }
 
-    h1 {
-      font-size: 1.8rem;
-      color: var(--accent);
-      letter-spacing: 2px;
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    h2 {
-      font-size: 1rem;
-    }
+    .floating-elements { position: fixed; width: 100%; height: 100%; pointer-events: none; }
 
-    #artists {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-    }
+    .cyber-circle { position: absolute; border: 2px solid #ff99cc; border-radius: 50%; animation: float 10s infinite linear; filter: drop-shadow(0 0 12px #ff99cc); }
+    .cyber-circle:nth-child(1) { width: 200px; height: 200px; top: 10%; left: 20%; border-top-color: transparent; border-right-color: transparent; animation-duration: 15s; }
+    .cyber-circle:nth-child(2) { width: 300px; height: 300px; bottom: 15%; right: 10%; border-bottom-color: transparent; border-left-color: transparent; animation-duration: 20s; animation-direction: reverse; }
 
-    .dj {
-      width: 300px; /* keep it crisp but not overpowering */
-      image-rendering: pixelated;
-    }
+    .hexagon { position: absolute; width: 100px; height: 115px; background: rgba(255, 204, 153, 0.08); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); animation: float 8s infinite ease-in-out; backdrop-filter: blur(2px); }
+    .hexagon:nth-child(3) { top: 20%; right: 25%; animation-delay: -2s; }
+    .hexagon:nth-child(4) { bottom: 30%; left: 15%; animation-delay: -4s; }
+    .hexagon:nth-child(5) { top: 40%; left: 30%; animation-delay: -6s; }
 
-    .rules-link {
-      margin-top: 0.5rem;
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      border: 3px solid var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-      transition: all 0.3s;
-    }
+    .container { text-align: center; padding: 3rem; background: rgba(0, 0, 0, 0.7); position: relative; z-index: 1; animation: pulse 2s infinite; border-radius: 20px; box-shadow: 0 0 25px rgba(255,105,180,0.5), 0 0 45px rgba(255,204,102,0.4); }
 
-    .rules-link:hover {
-      background: var(--accent);
-      color: #000;
-    }
+    h1 { font-size: clamp(3rem, 8vw, 6rem); margin: 0; letter-spacing: 5px; text-shadow: 2px 2px 0 #ffcc66, -2px -2px 0 #ff6699, 0 0 25px rgba(217,79,255,0.8); animation: glitch 3s infinite; position: relative; isolation: isolate; }
+
+    h1::before, h1::after { content: attr(data-text); position: absolute; inset: 0; mix-blend-mode: screen; pointer-events: none; text-shadow: none; animation: none; }
+    h1::before { transform: translate3d(-2px,0,0); color: #ff99cc77; }
+    h1::after  { transform: translate3d(2px,0,0);  color: #ffcc6677; }
+    .container:hover h1::before { transform: translate3d(-4px,0,0); }
+    .container:hover h1::after  { transform: translate3d(4px,0,0); }
+
+    h2 { font-size: 1.5rem; color: #ffe680; margin-top: 1rem; text-shadow: 0 0 8px #ffcc66; animation: flicker 4s infinite; }
+
+    .scanlines { position: fixed; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 50%, rgba(0, 0, 0, 0.03) 50%); background-size: 100% 4px; z-index: 2; pointer-events: none; }
+
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg);} 50% { transform: translateY(-20px) rotate(180deg);} }
+    @keyframes pulse { 0% { transform: scale(1);} 50% { transform: scale(1.02);} 100% { transform: scale(1);} }
+    @keyframes glitch { 0% { transform: translate(0);} 20% { transform: translate(-2px,2px);} 40% { transform: translate(-2px,-2px);} 60% { transform: translate(2px,2px);} 80% { transform: translate(2px,-2px);} 100% { transform: translate(0);} }
+    @keyframes flicker { 0%,100%{opacity:1;} 10%{opacity:.8;} 20%{opacity:1;} 90%{opacity:.9;} }
+
+    .ticker-wrap { position: fixed; bottom: 0; left: 0; width: 100%; overflow: hidden; height: 36px; z-index: 3; }
+    .ticker { position: absolute; white-space: nowrap; will-change: transform; animation: marquee 20s linear infinite; }
+    .ticker span { display:inline-block; padding: 0 1.25rem; opacity:.9; }
+    .ticker-mask { position:absolute; inset:0; pointer-events:none; background: linear-gradient(90deg, rgba(0,0,0,.8), transparent 10%, transparent 90%, rgba(0,0,0,.8)); }
+    @keyframes marquee { 0% { transform: translateX(0);} 100% { transform: translateX(-50%);} }
+
+    .grid-overlay { position: fixed; inset: 0; background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px); background-size: 18px 18px; mix-blend-mode: soft-light; opacity:.35; pointer-events:none; z-index:1; }
+
+    @media (max-width: 520px){ h1{ letter-spacing:2px; } .container{ padding:2rem; } .ticker-wrap{ height:30px; } }
   </style>
 </head>
 <body>
-  <div class="panel">
-    <h2> liam + nick present </h2>
-    <h1>TECHNOTUBBIES</h1>
-    <h2>JULY 12</h2>
-    <h2>( thanks 4 coming i love you all <3 )</h2>
-    <h2><a
-            href='https://www.dropbox.com/scl/fo/wc76y28je9in48q8f5szy/ACP3LiD7sqPqBZVxadR2ApI?rlkey=g9fyjh8dni9zzy35pdk35f2i9&st=bt6mc0u1&dl=0'
-            style="color: white;">
-            ARCHIVE </a> </h2>
+  <div class="floating-elements" aria-hidden="true">
+    <div class="cyber-circle"></div>
+    <div class="cyber-circle"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+    <div class="hexagon"></div>
+  </div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
 
-
-
-    <p id="artists"><span class='accent'> SOUNDS BY: </span> </p>
-    <p id="artists"> peter + amanda [AZ] </p>
-    <p id="artists">LIAM  </p>
-
-    <a href="rules.html" class="rules-link">RULES+DETAILS</a>
-    <!-- DJ sprite -->
-    <img src="standing_dj_tub.png" alt="Technotubby DJ" class="dj" />
-
-
+  <div class="container">
+    <h1 data-text="michael monday">michael monday</h1>
+    <img src="mike.png" alt="mike" width="190" height="140" style="margin-top:1rem; border-radius:12px; box-shadow:0 0 12px rgba(255,204,102,0.7);"/>
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>open invite bring all da homies 👍 💜 •</span><span>open invite bring all da homies 👍 💜 •</span><span>open invite bring all da homies 👍 💜 •</span><span>open invite bring all da homies 👍 💜 •</span>
+      </div>
+      <div class="ticker-mask" aria-hidden="true"></div>
+    </div>
+    <div style="margin-top:1rem; font-size:1.4rem;">😁🥰🫶🤩💞</div>
+    <div style="margin-top:0rem; font-size:1.4rem;">monday aug. 25 😄 </div>
+    <div style="margin-top:0.5rem; font-size:1rem; color:#ffe680; text-shadow:0 0 6px #ffcc66;">food provided (vegan options) but plz also bring snacks or drinks 👍</div>
+    <div style="margin-top:0.5rem; font-size:1rem; color:#ffe680; text-shadow:0
+        0 6px #ffcc66;">rsvp to 4803352110 </div>
   </div>
 </body>
 </html>
