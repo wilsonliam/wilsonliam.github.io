@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATT'S AVANT SKI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Montserrat:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0a1a2e 0%, #162b4a 50%, #1e3a5f 100%);
+            color: #e0f2fe;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* Snow effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 200px 200px, 150px 150px, 180px 180px;
+            background-position: 0 0, 50px 50px, 100px 100px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+        }
+
+        /* Mountains background */
+        .mountains {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 300px solid #2e4a6f;
+        }
+
+        .mountain:nth-child(1) {
+            left: -50px;
+            border-bottom-color: #1e3a5f;
+        }
+
+        .mountain:nth-child(2) {
+            left: 150px;
+            border-bottom-color: #3d5a7f;
+            border-bottom-width: 250px;
+        }
+
+        .mountain:nth-child(3) {
+            right: 100px;
+            border-bottom-color: #2e4a6f;
+            border-bottom-width: 280px;
+        }
+
+        .mountain:nth-child(4) {
+            right: -100px;
+            border-bottom-color: #1e3a5f;
+        }
+
+        /* Main heading */
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            text-align: center;
+            color: #60a5fa;
+            text-shadow:
+                4px 4px 0px #3b82f6,
+                8px 8px 0px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(96, 165, 250, 0.5);
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            transform: rotate(-2deg);
+            position: relative;
+            z-index: 3;
+        }
+
+        h1::before {
+            content: '⛷';
+            position: absolute;
+            left: -60px;
+            top: 20px;
+            font-size: 0.6em;
+            transform: rotate(15deg);
+        }
+
+        h1::after {
+            content: '🎿';
+            position: absolute;
+            right: -60px;
+            top: 20px;
+            font-size: 0.6em;
+            transform: rotate(-15deg);
+        }
+
+        /* Subtitle */
+        .subtitle {
+            text-align: center;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #93c5fd;
+            font-weight: 600;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Details section */
+        .details-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .details-header {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #60a5fa;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .details-line {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            color: #e0f2fe;
+            font-weight: 600;
+            line-height: 1.8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Music section - simple list style */
+        .music-section {
+            background: transparent;
+            border: none;
+            transform: none;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .music-section::before {
+            display: none;
+        }
+
+        .sounds-by {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #60a5fa;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .artist-list {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            color: #e0f2fe;
+            font-weight: 600;
+            line-height: 1.8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .artist-list p {
+            margin: 8px 0;
+        }
+
+        /* Decorative ski elements */
+        .ski-decoration {
+            text-align: center;
+            font-size: 2rem;
+            margin: 40px 0;
+            opacity: 0.6;
+        }
+
+        /* Retro pattern overlay */
+        .pattern-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(96, 165, 250, 0.03) 10px,
+                    rgba(96, 165, 250, 0.03) 20px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1::before,
+            h1::after {
+                display: none;
+            }
+
+
+            .mountain {
+                border-left-width: 100px;
+                border-right-width: 100px;
+                border-bottom-width: 150px;
+            }
+        }
+
+        /* Image overlay and vintage paper texture effect */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(30, 58, 95, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(46, 74, 111, 0.1) 0%, transparent 50%),
+                url('matt.jpg') center / cover no-repeat;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pattern-overlay"></div>
+    <div class="mountains">
+        <div class="mountain"></div>
+        <div class="mountain"></div>
+        <div class="mountain"></div>
+        <div class="mountain"></div>
+    </div>
+
+    <div class="container">
+        <h1>MATT'S AVANT SKI</h1>
+        <div class="subtitle">Après-Ski Party</div>
+
+        <div class="ski-decoration">⛷ 🎿 ⛷ 🎿 ⛷</div>
+
+        <div class="details-section">
+            <div class="details-header">DETAILS</div>
+            <div class="details-line">FRIDAY DEC 7</div>
+            <div class="details-line">9-11pm</div>
+            <div class="details-line">3591 BASEMENT</div>
+        </div>
+
+        <div class="music-section">
+            <div class="sounds-by">SOUNDS BY:</div>
+            <div class="artist-list">
+                <p>ELLE B2B SCHLIAM</p>
+                <p>(UKG/MINIMAL TECH)</p>
+            </div>
+        </div>
+
+        <div class="ski-decoration">🎿 ⛷ 🎿 ⛷ 🎿</div>
+    </div>
+</body>
+
+</html>
