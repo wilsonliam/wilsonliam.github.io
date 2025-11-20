@@ -20,26 +20,69 @@
         padding: 0 1rem 2rem;
       }
 
-      img {
+      .image-wrapper {
+        position: relative;
         width: min(80vw, 650px);
+        max-height: 90vh;
+      }
+
+      .poster-image {
+        width: 100%;
         max-height: 90vh;
         height: auto;
         display: block;
       }
 
+      .white-elephant-link {
+        position: absolute;
+        left: 40%;
+        transform: translateX(-50%);
+        bottom: 50%;
+        width: 60%;
+        max-width: 260px;
+        display: block;
+      }
+
+      .white-elephant-link img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
+      }
+
+      .white-elephant-link:focus-visible {
+        outline: 3px solid #fff4;
+        outline-offset: 6px;
+      }
+
       @media (max-width: 480px) {
-        img {
+        .image-wrapper {
           width: min(95vw, 480px);
           max-height: 88vh;
+        }
+
+        .white-elephant-link {
+          width: 70%;
+          bottom: 42%;
         }
       }
     </style>
   </head>
   <body>
-    <img
-      src="hp_second_skinny_1160.png"
-      alt="Additional party details for Harry Potter event"
-    />
+    <div class="image-wrapper">
+      <img
+        class="poster-image"
+        src="hp_second_skinny_1160.png"
+        alt="Additional party details for Harry Potter event"
+      />
+      <a
+        class="white-elephant-link"
+        href="white-elephant.html"
+        aria-label="View White Elephant details"
+      >
+        <img src="White_Elephant_.png" alt="White Elephant badge" />
+      </a>
+    </div>
   </body>
 </html>
 
